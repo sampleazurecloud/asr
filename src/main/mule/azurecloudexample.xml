@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="23cd37a9-6b66-45f4-ac05-9a0562ec33a9" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="azurecloudexampleFlow" doc:id="7004c5f9-d526-4d33-968e-248577d0cbff" >
+		<http:listener doc:name="Listener" doc:id="80b79a85-0dec-4910-8439-7db823757d6f" config-ref="HTTP_Listener_config" path="/azure"/>
+		<ee:transform doc:name="Transform Message" doc:id="cc7f5baf-e1f3-4a15-9906-480190c1f3d1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+"message":"Namasthe anna!"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="0d902260-cd0b-4320-bf67-a45434c780fd" message="#[payload]"/>
+	</flow>
+</mule>

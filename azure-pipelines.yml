@@ -2,7 +2,7 @@
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
+[![Build Status](https://dev.azure.com/sandeepanumula0968/AzureYaml/_apis/build/status/AzureYaml-Maven-CI?branchName=master)](https://dev.azure.com/sandeepanumula0968/AzureYaml/_build/latest?definitionId=2&branchName=master)
 trigger:
 - master
 
